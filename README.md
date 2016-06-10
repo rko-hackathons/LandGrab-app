@@ -29,13 +29,13 @@ Additional features could be added like
 *   ?new feature?
 
 ### Live Demos
-Apple *iPhone* and any *Android* smartphones (or tablets) can run the static mobile app from the _free_ **Ionic View app** (available on "the App stores"), using the preview code: **xxx**
+Apple *iPhone* and any *Android* smartphones (or tablets) can run the static mobile app from the _free_ **Ionic View app** (available on "the App stores"), using the preview code: **47c92b25**
 
-Download the static LandGrab APK (v0.0.2) here:  https://rink.hockeyapp.net/apps/xxx
+Download the static LandGrab APK (v0.0.2) here:  https://rink.hockeyapp.net/apps/0d5a818aa9c34a979b0ec93fd9ddda9d
 
 ##Resources
 
-Ionic and Proximi.io 2016 Hackathon post: http://www.example.com
+Ionic and Proximi.io 2016 Hackathon post: http://blog.ionic.io/develop-a-location-aware-app-in-the-ionic-proximi-io-hackathon/
 
 Ionic Framework: https://github.com/driftyco/front-page
 
