@@ -1,7 +1,14 @@
 <ion-view title="Capture" id="page2" class=" ">
     <ion-content padding="true" class="has-header">
-        <h1 id="capture-heading1" style="color:#000000;" class=" ">(Map with grid)</h1>
+        <!--<h1 id="capture-heading1" style="color:#000000;" class=" ">(Map with grid)</h1>-->
+        <div id="map" data-tap-disabled="true"></div>
         <p id="capture-markdown2" style="color:#000000;font-size:16px;" class=" ">You've entered an unclaimed area/area claimed by xxxxxx</p>
         <a ui-sref="tabsController.AreaName" id="capture-button4" class=" button button-positive  button-block ">Claim this area!</a>
     </ion-content>
 </ion-view>
+
+<style type="text/css">
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: calc(100% - 160px); }
+  .scroll { height: 100%; }
+</style>
