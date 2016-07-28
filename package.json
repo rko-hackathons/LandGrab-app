@@ -1,7 +1,7 @@
 {
-  "name": "landgrab-static",
+  "name": "landgrab",
   "version": "0.0.1",
-  "description": "landgrab-static: An Ionic project",
+  "description": "landgrab: An Ionic game",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

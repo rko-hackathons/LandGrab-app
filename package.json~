@@ -1,6 +1,6 @@
 {
   "name": "landgrab-static",
-  "version": "1.1.1",
+  "version": "0.0.1",
   "description": "landgrab-static: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
@@ -22,5 +22,8 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android",
+    "ios"
+  ]
 }
