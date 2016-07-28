@@ -1,7 +1,7 @@
 {
-  "name": "landgrab-static",
+  "name": "landgrab",
   "version": "0.0.1",
-  "description": "landgrab-static: An Ionic project",
+  "description": "landgrab: An Ionic game",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -20,7 +20,11 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    {
+      "locator": "https://github.com/proximiio/proximiio-cordova.git",
+      "id": "navtureapps-proximiio"
+    }
   ],
   "cordovaPlatforms": [
     "android",
