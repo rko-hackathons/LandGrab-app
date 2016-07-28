@@ -1,3 +1,7 @@
 plugins
 ios
 android
+/*.json~
+
+*.json~
+*.project~
