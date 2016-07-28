@@ -1,6 +1,11 @@
 angular.module('app.controllers', ['app.services'])
   
-.controller('captureCtrl', function($scope, $cordovaGeolocation) {
+.controller('captureCtrl', function($scope, $cordovaGeolocation, $http) {
+
+  var PROXIMIIO_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
+
+    $http.defaults.headers.common.Authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
+
     
     var options = {timeout: 10000, enableHighAccuracy: true};
  
@@ -10,7 +15,7 @@ angular.module('app.controllers', ['app.services'])
      
         var mapOptions = {
           center: latLng,
-          zoom: 15,
+          zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
      
@@ -20,7 +25,7 @@ angular.module('app.controllers', ['app.services'])
  
           var marker = new google.maps.Marker({
               map: $scope.map,
-              animation: google.maps.Animation.DROP,
+              animation: google.maps.Animation.BOUNCE,
               position: latLng
           });      
          
@@ -33,12 +38,62 @@ angular.module('app.controllers', ['app.services'])
           });
          
         });
+        
+
+        $scope.getGeofences();
+
      
       }, function(error){
         console.log("Could not get location");
         console.log (error);
       });
       
+      $scope.getGeofences = function (){
+        $http.get("http://api.proximi.fi/core/geofences")
+          .then(function(response) {
+              //First function handles success
+              console.log (response);
+              response.data.forEach(function(element, index, array) {
+                if (index != 0){
+                  //console.log (element.address);
+                  $scope.drawGeofenceMarker (element.geopoint, element.address, element.radius);
+                }
+              });
+          }, function(response) {
+              //Second function handles error
+              console.log ('getGeofences Error:' + response);
+          });
+      }
+
+      $scope.drawGeofenceMarker = function(coor, address, rad){       
+
+        var marker = new google.maps.Marker({
+          map: $scope.map,
+          position: {lat: coor[1], lng: coor[0]},
+          animation: google.maps.Animation.DROP
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+              content: address
+          });
+         
+        google.maps.event.addListener(marker, 'click', function () {
+            infoWindow.open($scope.map, marker);
+        });
+       
+
+        // Add circle overlay and bind to marker
+        var circle = new google.maps.Circle({
+          map: $scope.map,
+          radius: rad,    // 10 miles in metres
+          strokeColor:"#0000FF",
+          strokeOpacity:0.8,
+          strokeWeight:2,
+          fillColor:"#0000FF",
+          fillOpacity:0.4
+        });
+        circle.bindTo('center', marker, 'position');
+      }
 
 })
    
