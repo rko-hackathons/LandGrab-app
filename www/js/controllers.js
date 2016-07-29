@@ -6,6 +6,7 @@ angular.module('app.controllers', ['app.services'])
 
     $http.defaults.headers.common.Authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
+    //$scope.areasclaimed = ['Shatin', 'Kowloon'];
     
     var options = {timeout: 10000, enableHighAccuracy: true};
  
@@ -38,10 +39,8 @@ angular.module('app.controllers', ['app.services'])
           });
          
         });
-        
 
         $scope.getGeofences();
-
      
       }, function(error){
         console.log("Could not get location");
@@ -95,9 +94,15 @@ angular.module('app.controllers', ['app.services'])
         circle.bindTo('center', marker, 'position');
       }
       
-      $scope.claim = function(){
-        if ($rootScope.areaclaimed) $state.go ('tabsController.AreaName');
-        else $state.go ('tabsController.setQuestionForAreaName');
+      $scope.claim = function() {
+	      console.log("claim()");
+        if ($rootScope.areaclaimed) {
+	      console.log("AreaName");
+	       $state.go ('tabsController.AreaName');
+	} else {
+	      console.log("setQuestionForAreaName");
+		$state.go ('tabsController.setQuestionForAreaName');
+	}
       }
 
 })
@@ -111,14 +116,6 @@ angular.module('app.controllers', ['app.services'])
 })
          
 .controller('splashCtrl', function($scope) {
-
-})
-   
-.controller('loginCtrl', function($scope) {
-
-})
-   
-.controller('signupCtrl', function($scope) {
 
 })
    
@@ -137,7 +134,6 @@ angular.module('app.controllers', ['app.services'])
 .controller('AreaName2Ctrl', function($scope) {
   
   $scope.correctanswer = true;
-  
   $scope.claimedtip = 'The park is a nice place to jog!';
 
 })
@@ -148,12 +144,18 @@ angular.module('app.controllers', ['app.services'])
    
 .controller('earnedTipsCtrl', function($scope) {
   
-  $scope.tips = [{area: 'Shatin', content: 'museum is free to visit on Wednesday'}, {area: 'Kowloon', content: 'Be sure to check out the ferry!'}];
+  $scope.tips = [
+	{area: 'Shatin', content: 'museum is free to visit on Wednesday'},
+	{area: 'Kowloon', content: 'Be sure to check out the ferry!'}
+  ];
 
 })
    
 .controller('leaderboardCtrl', function($scope) {
-  $scope.leaderboard = [{name: 'John Smith', areas: 5}, {name: 'Edward Smith', areas: 2}];
+  $scope.leaderboard = [
+	{name: 'John Smith', areas: 5},
+	{name: 'Edward Smith', areas: 2}
+  ];
 
 })
    

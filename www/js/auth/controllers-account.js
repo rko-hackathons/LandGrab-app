@@ -7,6 +7,7 @@ angular.module('app.controllers-account', [])
 
   // ----
   // Init other
+  $scope.areasclaimed = ['Shatin', 'Kowloon'];
 
   // global variables
   $scope.AuthData = Auth.AuthData;
@@ -60,8 +61,10 @@ angular.module('app.controllers-account', [])
     // proceed to next state if specified (for instance when user comes from foreign state)
     if($stateParams.nextState != undefined && $stateParams.nextState != null && $stateParams.nextState != "") {
       $state.go($stateParams.nextState);
+    //} else {
+    	//$state.go('tabsController.capture');
+    	//$state.go('tab.account');
     }
-
     
   };
 
@@ -548,7 +551,8 @@ angular.module('app.controllers-account', [])
       disableAnimate: true,
       disableBack: true
     });
-    $state.go('tab.account');
+    //$state.go('tab.account');
+    $state.go('tabsController.capture');
   };
 
   // Open the login modal

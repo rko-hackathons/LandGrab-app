@@ -1,6 +1,6 @@
 {
   "name": "landgrab",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "landgrab: An Ionic game",
   "dependencies": {
     "gulp": "^3.5.6",

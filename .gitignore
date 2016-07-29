@@ -17,3 +17,5 @@ android
 /www/lib
 lib
 ionic
+.io-config.json
+*.json~
