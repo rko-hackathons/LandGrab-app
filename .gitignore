@@ -14,3 +14,4 @@ android
 *.js~
 *.swp
 *.html~
+/www/lib
