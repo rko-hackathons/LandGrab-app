@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'ngCordova'])
 
-.run(function($ionicPlatform, Proximiio, $http) {
+.run(function($ionicPlatform, Proximiio, $http, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,6 +21,9 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     }
     
     console.log ('platformready');
+
+    $rootScope.entered=false;
+    document.getElementById("area-name").innerHTML = 'Rest of the world';
     
     var PROXIMIIO_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
@@ -38,12 +41,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     
         proximiio.setOutputTriggerCallback(function (output) {
           // Your code here
+          console.log (output);
         });
     
         proximiio.setInputTriggerCallback(function(enter, geofence) {
           // Your code here
           console.log ("Entered "+geofence.address);
+          $rootScope.entered=true;
           document.getElementById("area-name").innerHTML = geofence.address;
+          console.log ($rootScope.entered);
         });
     
         proximiio.setPositionChangeCallback(function(coords) {
@@ -52,6 +58,9 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
           //document.getElementById("position-longitude").innerHTML = coords.coordinates.lon;
           //document.getElementById("position-accuracy").innerHTML = coords.accuracy;
         });
+
+        // proximiio.setGeofenceTriggerCallback(function(enter, geofence) {                          
+        // });
 
 
         console.log ('proximiio');
