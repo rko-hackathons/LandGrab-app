@@ -24,7 +24,9 @@
     {
       "locator": "https://github.com/proximiio/proximiio-cordova.git",
       "id": "navtureapps-proximiio"
-    }
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-geolocation"
   ],
   "cordovaPlatforms": [
     "android",

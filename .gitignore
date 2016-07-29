@@ -5,3 +5,12 @@ android
 
 *.json~
 *.project~
+/www/js/auth/*.js~
+/www/js/*.swp
+/www/*.html~
+/node_modules
+/*.xml~
+/*.log
+*.js~
+*.swp
+*.html~
