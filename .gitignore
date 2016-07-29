@@ -19,3 +19,5 @@ lib
 ionic
 .io-config.json
 *.json~
+.io-config.json
+*.json~
