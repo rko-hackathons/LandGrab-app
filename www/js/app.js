@@ -25,6 +25,18 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     $rootScope.entered=false;
     document.getElementById("area-name").innerHTML = 'Rest of the world';
     
+    $rootScope.enterarea = function(){
+      $rootScope.areaclaimed = true;
+      $rootScope.areaentered = {
+        claimedby: 'John Smith'
+      }
+      //console.log ($rootScope.areaclaimed);
+    }
+    
+    $rootScope.enterarea();
+    // $rootScope.areaname set in proximiio.setInputTriggerCallback
+    $rootScope.areaname = 'Area';
+    
     var PROXIMIIO_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
     $http.defaults.headers.common.Authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
@@ -50,6 +62,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
           $rootScope.entered=true;
           document.getElementById("area-name").innerHTML = geofence.address;
           console.log ($rootScope.entered);
+          
+          $rootScope.areaname = geofence.address;
+          
+          $rootScope.enterarea();
         });
     
         proximiio.setPositionChangeCallback(function(coords) {
