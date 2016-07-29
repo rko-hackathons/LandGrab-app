@@ -1,13 +1,54 @@
-// Ionic Starter App
+/* Ionic Starter App
+ *
+ * uses versions: 
+ *  ionic:        1.2.4
+ *  firebase:     2.4.0
+ *  angularfire:  1.1.3
+ * 
+ * To edit the SASS, use gulp:
+ * npm install -g gulp
+ * 
+ * Also install the following ngCordova plugins:
+ *  cordova plugin add cordova-plugin-inappbrowser
+ *  cordova plugin add ionic-plugin-keyboard
+ */
+
+//var FBURL                 = "<YOUR-FB-URL>";
+var FBURL                 = "https://landgrab.firebaseio.com/";
+var POST_MAX_CHAR         = 150;
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'ngCordova'])
+angular.module('app', [
+	'ionic', 
+	'ngCordova',
+	"firebase",
 
-.run(function($ionicPlatform, Proximiio, $http, $rootScope) {
+	// custom code
+	'app.controllers', 
+	'app.routes', 
+	'app.services',
+	'app.directives',
+
+  // auth and profile
+  'app.controllers-account',
+  'app.services-auth',
+  'app.services-profile',
+  
+  // cordova
+  'app.services-cordova-camera',
+  
+  // helpers
+  'app.services-codes',
+  'app.services-utils',
+  'app.services-fb-functions'
+  ]
+)
+
+.run(function($ionicPlatform, Proximiio, $http, $rootScope, $state, $ionicHistory) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,7 +64,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     console.log ('platformready');
 
     $rootScope.entered=false;
-    document.getElementById("area-name").innerHTML = 'Rest of the world';
+    //document.getElementById("area-name").innerHTML = 'Rest of the world';
     
     $rootScope.enterarea = function(){
       $rootScope.areaclaimed = true;
@@ -82,5 +123,18 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
         console.log ('proximiio');
     };
     initProximiio();
+  });
+
+    // Redirect the user to the login state if unAuthenticated
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    console.log("$stateChangeError", error);
+    event.preventDefault(); // http://goo.gl/se4vxu
+    if(error == "AUTH_LOGGED_OUT") {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true,
+        disableBack: true
+      });
+      $state.go('tabsController.profile');
+    }
   });
 })

@@ -1,14 +1,17 @@
 angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
+  // Define the resolve function, which checks whether the user is Authenticated
+  // It fires $stateChangeError if not the case
+  var authResolve = function (Auth) {
+    return Auth.getAuthState();
+  };
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
 
       .state('tabsController.capture', {
     url: '/page2',
@@ -44,17 +47,17 @@ angular.module('app.routes', [])
     controller: 'splashCtrl'
   })
 
-  .state('login', {
-    url: '/page6',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
-  })
+//  .state('login', {
+//    url: '/page6',
+//    templateUrl: 'templates/login.html',
+//    controller: 'loginCtrl'
+//  })
 
-  .state('signup', {
-    url: '/page7',
-    templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
-  })
+//  .state('signup', {
+//    url: '/page7',
+//    templateUrl: 'templates/signup.html',
+//    controller: 'signupCtrl'
+//  })
 
   .state('tabsController.AreaName', {
     url: '/page8',
@@ -107,17 +110,20 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.profile', {
-    url: '/page13',
+    //url: '/page13',
+    url: '/account/:nextState',
+    //url: '/account/:nextState',
     views: {
-      'tab4': {
-        templateUrl: 'templates/profile.html',
-        controller: 'profileCtrl'
+      //'tab4': {
+      'tab-account': {
+        //templateUrl: 'templates/profile.html',
+        //controller: 'profileCtrl'
+	templateUrl: 'templates/auth/tab-account.html',
+        controller: 'AccountCtrl'
       }
     }
   })
 
 $urlRouterProvider.otherwise('/page1/page2')
-
-  
 
 });
