@@ -130,14 +130,18 @@ angular.module('app.controllers', ['app.services'])
 })
    
 .controller('earnedTipsCtrl', function($scope) {
+  
+  $scope.tips = [{area: 'Shatin', content: 'museum is free to visit on Wednesday'}, {area: 'Kowloon', content: 'Be sure to check out the ferry!'}];
 
 })
    
 .controller('leaderboardCtrl', function($scope) {
+  $scope.leaderboard = [{name: 'John Smith', areas: 5}, {name: 'Edward Smith', areas: 2}];
 
 })
    
 .controller('profileCtrl', function($scope) {
+  $scope.areasclaimed = ['Shatin', 'Kowloon'];
 
 })
  
