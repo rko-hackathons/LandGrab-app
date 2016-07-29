@@ -1,11 +1,14 @@
-<ion-view title="(Area name)" id="page8" class=" ">
+<ion-view title="{{areaname}}" id="page8" class=" ">
+    <ion-nav-title>
+      {{areaname}}
+    </ion-nav-title>
     <ion-content padding="true" class="has-header">
-        <h3 id="AreaName-heading3" style="color:#000000;text-align:center;" class=" ">Area claimed by xxxxxx</h3>
-        <p id="AreaName-markdown3" style="color:#000000;" class=" ">What is the name of the building at the end of yyyyyy street?</p>
+        <h3 id="AreaName-heading3" style="color:#000000;text-align:center;" class=" ">Area claimed by {{areaquestion.by}}</h3>
+        <p id="AreaName-markdown3" style="color:#000000;" class=" ">What is the name of the building at the end of {{areaquestion.street}} street?</p>
         <form id="AreaName-form4" class="list ">
-            <ion-radio id="AreaName-radio2" class=" ">aaaaaaa</ion-radio>
-            <ion-radio id="AreaName-radio3" class=" ">bbbbbbbbbbbbbb</ion-radio>
-            <ion-radio id="AreaName-radio4" class=" ">ccccccccccc</ion-radio>
+            <ion-radio id="AreaName-radio2" class=" ">{{areaquestion.answer1}}</ion-radio>
+            <ion-radio id="AreaName-radio3" class=" ">{{areaquestion.answer2}}</ion-radio>
+            <ion-radio id="AreaName-radio4" class=" ">{{areaquestion.answer3}}</ion-radio>
         </form>
         <a ui-sref="tabsController.AreaName2" id="AreaName-button5" class=" button button-positive  button-block ">Submit</a>
     </ion-content>

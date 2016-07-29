@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['app.services'])
   
-.controller('captureCtrl', function($scope, $cordovaGeolocation, $http) {
+.controller('captureCtrl', function($scope, $cordovaGeolocation, $http, $rootScope, $state) {
 
   var PROXIMIIO_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
@@ -94,6 +94,11 @@ angular.module('app.controllers', ['app.services'])
         });
         circle.bindTo('center', marker, 'position');
       }
+      
+      $scope.claim = function(){
+        if ($rootScope.areaclaimed) $state.go ('tabsController.AreaName');
+        else $state.go ('tabsController.setQuestionForAreaName');
+      }
 
 })
    
@@ -118,10 +123,22 @@ angular.module('app.controllers', ['app.services'])
 })
    
 .controller('AreaNameCtrl', function($scope) {
+  
+  $scope.areaquestion = {
+    by: 'Edward Smith',
+    street: 'Shatin',
+    answer1: 'Best building',
+    answer2: 'The One Building',
+    answer3: 'Tallest building'
+  }
 
 })
    
 .controller('AreaName2Ctrl', function($scope) {
+  
+  $scope.correctanswer = true;
+  
+  $scope.claimedtip = 'The park is a nice place to jog!';
 
 })
    
@@ -130,14 +147,18 @@ angular.module('app.controllers', ['app.services'])
 })
    
 .controller('earnedTipsCtrl', function($scope) {
+  
+  $scope.tips = [{area: 'Shatin', content: 'museum is free to visit on Wednesday'}, {area: 'Kowloon', content: 'Be sure to check out the ferry!'}];
 
 })
    
 .controller('leaderboardCtrl', function($scope) {
+  $scope.leaderboard = [{name: 'John Smith', areas: 5}, {name: 'Edward Smith', areas: 2}];
 
 })
    
 .controller('profileCtrl', function($scope) {
+  $scope.areasclaimed = ['Shatin', 'Kowloon'];
 
 })
  
