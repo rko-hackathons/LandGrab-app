@@ -63,8 +63,9 @@ angular.module('app', [
     
     console.log ('platformready');
 
-    $rootScope.entered=false;
-    //document.getElementById("area-name").innerHTML = 'Rest of the world';
+    // Moved to controller
+    // $rootScope.entered=false;
+    // document.getElementById("area-name").innerHTML = 'Rest of the world';
     
     $rootScope.enterarea = function(){
       $rootScope.areaclaimed = true;
