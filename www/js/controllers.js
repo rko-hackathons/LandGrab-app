@@ -7,6 +7,8 @@ angular.module('app.controllers', ['app.services'])
     $http.defaults.headers.common.Authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
     //$scope.areasclaimed = ['Shatin', 'Kowloon'];
+    $rootScope.entered=false;
+    document.getElementById("area-name").innerHTML = 'Rest of the world';
     
     var options = {timeout: 10000, enableHighAccuracy: true};
  
