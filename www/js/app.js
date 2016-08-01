@@ -115,6 +115,7 @@ angular.module('app', [
           //document.getElementById("position-latitude").innerHTML = coords.coordinates.lat;
           //document.getElementById("position-longitude").innerHTML = coords.coordinates.lon;
           //document.getElementById("position-accuracy").innerHTML = coords.accuracy;
+          console.log (coords);
         });
 
         // proximiio.setGeofenceTriggerCallback(function(enter, geofence) {                          
@@ -124,6 +125,7 @@ angular.module('app', [
         console.log ('proximiio');
     };
     //initProximiio();
+    initProximiio();
   });
 
     // Redirect the user to the login state if unAuthenticated
@@ -135,6 +137,7 @@ angular.module('app', [
         disableAnimate: true,
         disableBack: true
       });
+  initProximiio();
       $state.go('tabsController.profile');
     } else {
  	initProximiio();
