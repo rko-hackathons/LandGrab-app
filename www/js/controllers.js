@@ -124,7 +124,7 @@ angular.module('app.controllers', ['app.services'])
 .controller('AreaNameCtrl', function($scope) {
   
   $scope.areaquestion = {
-    by: 'Edward Smith',
+    by: 'John Smith',
     street: 'Shatin',
     answer1: 'Best building',
     answer2: 'The One Building',
