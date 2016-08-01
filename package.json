@@ -1,6 +1,6 @@
 {
   "name": "landgrab",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "landgrab: An Ionic game",
   "dependencies": {
     "gulp": "^3.5.6",
@@ -17,7 +17,6 @@
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
-    "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
@@ -26,10 +25,10 @@
       "id": "navtureapps-proximiio"
     },
     "cordova-plugin-camera",
-    "cordova-plugin-geolocation"
+    "cordova-plugin-geolocation",
+    "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "android"
   ]
 }
