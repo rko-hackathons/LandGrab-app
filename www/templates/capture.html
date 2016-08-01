@@ -10,8 +10,9 @@
 		<!--
         	<p id="capture-markdown2" style="color:#000000;font-size:16px;" class=" ">You've entered <p id="area-name">area</p> <p ng-if="!areaclaimed">an unclaimed area</p><p ng-if="areaclaimed">area claimed by {{areaentered.claimedby}}</p></p>
 		-->
-        	<p id="capture-markdown2" style="color:#000000;font-size:16px;" class=" ">You've entered <span id="area-name">AREA</span> <p ng-if="!areaclaimed">an unclaimed area</p><p ng-if="areaclaimed">claimed by {{areaentered.claimedby}}</p></p>
-	        <a id="capture-button4" class="button button-positive button-block" ng-click="claim()">Claim this area!</a>
+
+        	<p id="capture-markdown2" style="color:#000000;font-size:16px;" class=" ">You've entered <span id="area-name"></span> <p ng-if="!areaclaimed">an unclaimed area</p><p ng-if="areaclaimed">area claimed by {{areaentered.claimedby}}</p></p>
+	        <a ui-sref="" id="capture-button4" class="button button-positive button-block" ng-click="claim()">Claim this area!</a>
 	 </div>
 	 <!--<div ng-show"!entered">
 	    	<p>You have not entered an area. (If your location is within an area, please wait for a while.)

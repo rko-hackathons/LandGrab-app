@@ -1,7 +1,7 @@
 <ion-view title="Leaderboard" id="page12" class=" ">
     <ion-content padding="true" class="has-header">
         <div class="list card " id="leaderboard-card21">
-            <ion-item id="leaderboard-list-item1" class="  " ng-repeat="item in leaderboard">{{item.name}}
+            <ion-item id="leaderboard-list-item1" class="  " ng-repeat="item in leaderboard | orderBy: '-areas' track by $index  ">{{item.name}}
                 <span class="item-note">{{item.areas}} Areas claimed</span>
             </ion-item>
         </div>

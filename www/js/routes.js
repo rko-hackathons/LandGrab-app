@@ -18,7 +18,8 @@ angular.module('app.routes', [])
     views: {
       'tab1': {
         templateUrl: 'templates/capture.html',
-        controller: 'captureCtrl'
+        controller: 'captureCtrl',
+	resolve: {authResolve: authResolve}
       }
     }
   })

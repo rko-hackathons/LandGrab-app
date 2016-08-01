@@ -90,12 +90,12 @@ angular.module('app', [
         
           proximiio.setProximiioReadyCallback(function(visitorId) {
             //document.getElementById("visitor_id").innerHTML = visitorId;
-            console.log (visitorId);
+            console.log ("visitorId: "+visitorId);
           })
     
         proximiio.setOutputTriggerCallback(function (output) {
           // Your code here
-          console.log (output);
+          console.log ("output: "+output);
         });
     
         proximiio.setInputTriggerCallback(function(enter, geofence) {
@@ -103,7 +103,7 @@ angular.module('app', [
           console.log ("Entered "+geofence.address);
           $rootScope.entered=true;
           document.getElementById("area-name").innerHTML = geofence.address;
-          console.log ($rootScope.entered);
+          console.log ("entered:"+$rootScope.entered);
           
           $rootScope.areaname = geofence.address;
           
@@ -123,7 +123,7 @@ angular.module('app', [
 
         console.log ('proximiio');
     };
-    initProximiio();
+    //initProximiio();
   });
 
     // Redirect the user to the login state if unAuthenticated
@@ -136,6 +136,8 @@ angular.module('app', [
         disableBack: true
       });
       $state.go('tabsController.profile');
+    } else {
+ 	initProximiio();
     }
   });
 })
