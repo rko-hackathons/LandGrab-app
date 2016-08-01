@@ -54,8 +54,10 @@ angular.module('app.controllers', ['app.services'])
               console.log (response);
               response.data.forEach(function(element, index, array) {
                 if (index != 0){
-                  //console.log (element.address);
-                  $scope.drawGeofenceMarker (element.geopoint, element.address, element.radius);
+                  console.log (element.address);
+		  if (element.address) { // ignore undefined
+                    $scope.drawGeofenceMarker (element.geopoint, element.address, element.radius);
+		  }
                 }
               });
           }, function(response) {
@@ -153,6 +155,7 @@ angular.module('app.controllers', ['app.services'])
    
 .controller('leaderboardCtrl', function($scope) {
   $scope.leaderboard = [
+	{name: 'Mike Kim', areas: 3},
 	{name: 'John Smith', areas: 5},
 	{name: 'Edward Smith', areas: 2}
   ];
