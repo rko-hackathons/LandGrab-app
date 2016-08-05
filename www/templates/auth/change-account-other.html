@@ -1,16 +1,16 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive">
-    <h1 class="title">Areas claimed</h1>
+    <h1 class="title">Areas Claimed</h1>
     <div class="buttons">
       <button class="button button-icon button-clear ion-ios-close-empty" ng-click="closeOther()"></button>
     </div>
   </ion-header-bar>
-  <ion-content  >
+  <ion-content>
   	<ion-list>
-	<ion-item class="item item-divider" ng-repeat="area in areasclaimed">
+	<ion-item class="item item-divider" ng-repeat="area in AreasClaimed">
 		{{area}}
   		<span class="item-note">claimed!</span>
-		</ion-item>
+	</ion-item>
 	</ion-list>
   </ion-content>
 </ion-modal-view>

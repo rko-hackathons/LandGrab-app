@@ -7,7 +7,7 @@ angular.module('app.controllers-account', [])
 
   // ----
   // Init other
-  $scope.areasclaimed = ['Shatin', 'Kowloon'];
+  //$scope.areasclaimed = ['Shatin', 'Kowloon'];
 
   // global variables
   $scope.AuthData = Auth.AuthData;
@@ -571,6 +571,7 @@ angular.module('app.controllers-account', [])
   };
 
   $scope.OtherData = {};
+  $scope.AreasClaimed = {};
   function loadOtherData() {
     $scope.status['loadingOtherData'] = true;
     if($scope.AuthData.hasOwnProperty('uid')){
@@ -580,8 +581,10 @@ angular.module('app.controllers-account', [])
           // bind to scope
           if(ProfileData != null) {
             $scope.ProfileData  = ProfileData;
-            if(ProfileData.hasOwnProperty('other')) {
-              $scope.OtherData    = ProfileData.other;
+            if(ProfileData.hasOwnProperty('areas')) {
+	      //$scope.OtherData    = ProfileData.other;
+              //areasclaimed
+	      $scope.AreasClaimed    = ProfileData.areas;
             }
           };
           

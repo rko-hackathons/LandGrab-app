@@ -13,8 +13,8 @@
  *  cordova plugin add ionic-plugin-keyboard
  */
 
-//var FBURL                 = "<YOUR-FB-URL>";
-var FBURL                 = "https://landgrab.firebaseio.com/";
+//var FBURL                 = "<YOUR-FB-URL>"; // NOTE FB Version2
+var FBURL                 = "https://landgrab0.firebaseio.com/";
 var POST_MAX_CHAR         = 150;
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -137,7 +137,7 @@ angular.module('app', [
         disableAnimate: true,
         disableBack: true
       });
-  initProximiio();
+  //initProximiio();
       $state.go('tabsController.profile');
     } else {
  	initProximiio();
