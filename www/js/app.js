@@ -68,16 +68,25 @@ angular.module('app', [
     // document.getElementById("area-name").innerHTML = 'Rest of the world';
     
     $rootScope.enterarea = function(){
-      $rootScope.areaclaimed = true;
-      $rootScope.areaentered = {
-        claimedby: 'John Smith'
-      }
+	    if ($rootScope.entered){
+		    if ($rootscope.areaname){
+			    // then lookup area in claimed
+			    $rootScope.areaname = "Kowloon";
+			    $rootScope.areaclaimed = True;
+			    $rootScope.claimedby = "Alvis";
+		    } else {
+			    console.log("empty areaname in enterarea()");
+		    }
+	    } else {
+		    console.log("not entered but called enterarea()");
+	    }
       //console.log ($rootScope.areaclaimed);
     }
     
+    $rootScope.areaname = 'Area';
+    $rootScope.entered = True;
     $rootScope.enterarea();
     // $rootScope.areaname set in proximiio.setInputTriggerCallback
-    $rootScope.areaname = 'Area';
     
     var PROXIMIIO_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6IjgwYjU0OTUxNjFkMzRkMjRjZDRjMWU5MWQ4NWRiYzUwIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiJhNWJkNjdjYS1kYTBkLTRhMzgtYTZmMy0yYzA0ODUzYjM5ZTIifQ.vxz-cxJVh44Pj6GuzHvL3W8WVICX8lw2Wuf9G121LY8';
 
@@ -100,12 +109,12 @@ angular.module('app', [
     
         proximiio.setInputTriggerCallback(function(enter, geofence) {
           // Your code here
-          console.log ("Entered "+geofence.address);
+          console.log ("Entered "+geofence.name);
           $rootScope.entered=true;
-          document.getElementById("area-name").innerHTML = geofence.address;
+          document.getElementById("area-name").innerHTML = geofence.name;
           console.log ("entered:"+$rootScope.entered);
           
-          $rootScope.areaname = geofence.address;
+          $rootScope.areaname = geofence.name;
           
           $rootScope.enterarea();
         });
@@ -128,7 +137,7 @@ angular.module('app', [
     initProximiio();
   });
 
-    // Redirect the user to the login state if unAuthenticated
+  // Redirect the user to the login state if unAuthenticated
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     console.log("$stateChangeError", error);
     event.preventDefault(); // http://goo.gl/se4vxu

@@ -125,7 +125,7 @@ angular.module('app.controllers', ['app.services'])
    
 .controller('AreaNameCtrl', function($scope) {
   
-  $scope.areaquestion = {
+  $scope.questions = {
     by: 'John Smith',
     street: 'Shatin',
     answer1: 'Best building',
@@ -165,7 +165,7 @@ angular.module('app.controllers', ['app.services'])
 })
    
 .controller('profileCtrl', function($scope) {
-  $scope.areasclaimed = ['Shatin', 'Kowloon'];
+  //$scope.areasclaimed = ['Shatin', 'Kowloon'];
 
 })
  
