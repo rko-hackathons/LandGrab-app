@@ -32,10 +32,14 @@ Apple *iPhone* and any *Android* smartphones (or tablets) can run the static mob
 
 Download the static LandGrab APK (v0.0.2) here:  https://rink.hockeyapp.net/apps/05fcfa76b28e4027b4efd5661e75aba5
 
-##Resources
+## Resources
 
 Ionic and Proximi.io 2016 Hackathon post: http://blog.ionic.io/develop-a-location-aware-app-in-the-ionic-proximi-io-hackathon/
 
 Ionic Framework: https://github.com/driftyco/front-page
 
 Proximi.io: https://www.Proximi.io/
+
+## License
+
+Copyright @ 201x [RKOSecurity](http://www.rkosecurity.com)
