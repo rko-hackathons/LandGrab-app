@@ -42,4 +42,4 @@ Proximi.io: https://www.Proximi.io/
 
 ## License
 
-Copyright @ 201x [RKOSecurity](http://www.rkosecurity.com)
+Copyright @ 2016 [RKOSecurity](http://www.rkosecurity.com)
